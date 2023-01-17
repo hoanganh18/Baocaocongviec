@@ -31,11 +31,7 @@ public class BooksController {
 
     @PostMapping("/books")
     public ResponseEntity addBook(@RequestBody Book book) throws ParseException, BadRequestExceptions {
-        Date date = new Date();
-        DateFormat dateFormat = new SimpleDateFormat("yy:MM:dd HH:mm:ss");
-        String strDate = dateFormat.format(date);
-        Date d = (Date) dateFormat.parse(strDate);
-        book.setBookBorrowedDate(d);
+
         if (book.getBookName().length() > 25) {
             throw new BadRequestExceptions("Vượt quá ký tự ", 1213);
         }

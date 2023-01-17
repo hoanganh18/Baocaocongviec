@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface BooksRepository extends JpaRepository<Book,Integer> {
-    @Query("SELECT b FROM Book b")
+    @Query("SELECT b FROM Book b ")
     public List<Book> getAllListBook();
     @Query("SELECT b FROM Book b Where b.id = ?1")
     public Book findBookByid(Integer id);

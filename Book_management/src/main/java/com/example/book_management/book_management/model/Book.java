@@ -20,28 +20,21 @@ public class Book {
     private Boolean bookStatus;
     @Column(name = "book_price")
     private Double bookPrice;
-    @Column(name = "book_borrower")
-    private String bookBorrower;
-    @Column(name = "book_borrowed_date")
-    private Date bookBorrowedDate;
+   @Column(name = "is_deleted")
+    private Boolean isDeleted;
     @Column(name = "id_group_book")
     private Integer idGroupBook;
+    @Column(name = "student_id")
+    private Integer studentId;
+    @Column(name = "borrowed_date")
+    private Date borrowedDate;
+    @Column(name = "return_date")
+    private Date returnDate;
     @ManyToOne
     @JoinColumn(name = "id_group_book", insertable = false, updatable = false)
     private GroupBook groupBook;
 
     public Book() {
-    }
-
-    public Book(Integer id, String bookName, String bookAuthor, Boolean bookStatus, Double bookPrice, String bookBorrower, Date bookBorrowedDate, Integer idGroupBook) {
-        this.id = id;
-        this.bookName = bookName;
-        this.bookAuthor = bookAuthor;
-        this.bookStatus = bookStatus;
-        this.bookPrice = bookPrice;
-        this.bookBorrower = bookBorrower;
-        this.bookBorrowedDate = bookBorrowedDate;
-        this.idGroupBook = idGroupBook;
     }
 
     public Integer getId() {
@@ -84,20 +77,12 @@ public class Book {
         this.bookPrice = bookPrice;
     }
 
-    public String getBookBorrower() {
-        return bookBorrower;
+    public Boolean getDeleted() {
+        return isDeleted;
     }
 
-    public void setBookBorrower(String bookBorrower) {
-        this.bookBorrower = bookBorrower;
-    }
-
-    public Date getBookBorrowedDate() {
-        return bookBorrowedDate;
-    }
-
-    public void setBookBorrowedDate(Date bookBorrowedDate) {
-        this.bookBorrowedDate = bookBorrowedDate;
+    public void setDeleted(Boolean deleted) {
+        isDeleted = deleted;
     }
 
     public Integer getIdGroupBook() {
@@ -108,6 +93,43 @@ public class Book {
         this.idGroupBook = idGroupBook;
     }
 
+    public Integer getStudentId() {
+        return studentId;
+    }
+
+    public void setStudentId(Integer studentId) {
+        this.studentId = studentId;
+    }
+
+    public Date getBorrowedDate() {
+        return borrowedDate;
+    }
+
+    public void setBorrowedDate(Date borrowedDate) {
+        this.borrowedDate = borrowedDate;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public Book(Integer id, String bookName, String bookAuthor, Boolean bookStatus, Double bookPrice, Boolean isDeleted, Integer idGroupBook, Integer studentId, Date borrowedDate, Date returnDate) {
+        this.id = id;
+        this.bookName = bookName;
+        this.bookAuthor = bookAuthor;
+        this.bookStatus = bookStatus;
+        this.bookPrice = bookPrice;
+        this.isDeleted = isDeleted;
+        this.idGroupBook = idGroupBook;
+        this.studentId = studentId;
+        this.borrowedDate = borrowedDate;
+        this.returnDate = returnDate;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
@@ -116,9 +138,11 @@ public class Book {
                 ", bookAuthor='" + bookAuthor + '\'' +
                 ", bookStatus=" + bookStatus +
                 ", bookPrice=" + bookPrice +
-                ", bookBorrower='" + bookBorrower + '\'' +
-                ", bookBorrowedDate=" + bookBorrowedDate +
+                ", isDeleted=" + isDeleted +
                 ", idGroupBook=" + idGroupBook +
+                ", studentId=" + studentId +
+                ", borrowedDate=" + borrowedDate +
+                ", returnDate=" + returnDate +
                 '}';
     }
 }
